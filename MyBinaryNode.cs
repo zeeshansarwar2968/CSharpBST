@@ -33,7 +33,7 @@ namespace BST
 
         //static variables to maintian state with multiple instanciation
         static int leftCount = 0, rightCount = 0;
-
+        bool result;
 
         //Method/function to insert values into the tree
         public void Insert(T item)
@@ -62,6 +62,34 @@ namespace BST
                 }
             }
         }
+
+        public bool Search(T element, MyBinaryNode<T> node)
+        {
+            if (node == null)
+            {
+                return false;
+            }
+            if (node.nodeData.Equals(element))
+            {
+                Console.WriteLine("Found the element in BST " + " " + node.nodeData);
+                result = true;
+            }
+            else
+            {
+                Console.WriteLine("Current element is {0} in BST ", node.nodeData);
+            }
+            if (element.CompareTo(node.nodeData) < 0)
+            {
+                Search(element, node.leftTree);
+            }
+            if (element.CompareTo(node.nodeData) > 0)
+            {
+                Search(element, node.rightTree);
+            }
+
+            return result;
+        }
+
 
         //Method to generate size of the tree
         public void GetSize()
