@@ -30,7 +30,9 @@ namespace BST
             this.rightTree = null;
         }
 
-        int leftCount = 0, rightCount = 0;
+
+        //static variables to maintian state with multiple instanciation
+        static int leftCount = 0, rightCount = 0;
 
 
         //Method/function to insert values into the tree
@@ -60,18 +62,24 @@ namespace BST
                 }
             }
         }
+
+        //Method to generate size of the tree
+        public void GetSize()
+        {
+            Console.WriteLine("Size of the tree is : " + " " + (1 + leftCount + rightCount));
+        }
         //Method to display the tree using recursion
         public void Display()
         {
             if (this.leftTree != null)
             {
-                this.leftCount++;
+                leftCount++;
                 this.leftTree.Display();
             }
             Console.WriteLine(this.nodeData.ToString());
             if (this.rightTree != null)
             {
-                this.rightCount++;
+                rightCount++;
                 this.rightTree.Display();
             }
         }
